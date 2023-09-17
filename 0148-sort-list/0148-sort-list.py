@@ -14,15 +14,34 @@ class Solution(object):
 
         values = []
         while head.next:
-            values.append(head.val)
+            values.append(head)
             head = head.next
-        values.append(head.val)
+        values.append(head)
 
-        values.sort()
+        values.sort(key=lambda x: x.val)
 
-        dummy_head = ListNode(0)
-        cur = dummy_head
-        for i in range(len(values)):
-            cur.next = ListNode(values[i])
-            cur = cur.next
-        return dummy_head.next
+
+        for i in range(len(values)-1):
+            values[i].next = values[i+1]
+
+        values[-1].next = None
+
+        return values[0]
+
+        # if head == None or head.next ==None:
+        #     return head
+
+        # values = []
+        # while head.next:
+        #     values.append(head.val)
+        #     head = head.next
+        # values.append(head.val)
+
+        # values.sort()
+
+        # dummy_head = ListNode(0)
+        # cur = dummy_head
+        # for i in range(len(values)):
+        #     cur.next = ListNode(values[i])
+        #     cur = cur.next
+        # return dummy_head.next
