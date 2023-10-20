@@ -11,24 +11,33 @@ class Solution(object):
         elif num == 0:
             return '0'
 
-
-        max_value = 1
-        while max_value <= num:
-            max_value*=7
-        max_value = int(max_value/7)
-        
         result = ''
+
+        while num > 0:
+            result += str(num%7)
+            num //= 7    
         if not isPositive:
             result += '-'
+
+        result = result[::-1]
+        return result
+        # max_value = 1
+        # while max_value <= num:
+        #     max_value*=7
+        # max_value = int(max_value/7)
+        
+        # result = ''
+        # if not isPositive:
+        #     result += '-'
             
         
 
-        while max_value >= 1:
-            result += str(num//max_value)
-            num %= max_value
-            max_value = int(max_value/7)
+        # while max_value >= 1:
+        #     result += str(num//max_value)
+        #     num %= max_value
+        #     max_value = int(max_value/7)
             
-        return result
+        # return result
 
 
 
